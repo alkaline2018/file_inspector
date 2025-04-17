@@ -1,7 +1,7 @@
 from file_inspector import FileInspector
 
 # 분석 대상 파일 경로 (예시)
-file_path = "data/sample.csv"
+file_path = "./sample.csv"
 
 # 인스턴스 생성 및 분석 수행
 inspector = FileInspector()
