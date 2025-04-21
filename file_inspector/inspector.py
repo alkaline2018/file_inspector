@@ -7,21 +7,22 @@ import pandas as pd
 from .file_reader import FileReader
 from .file_info_extractor import FileInfoExtractor
 from .schema_validator import SchemaValidator
+from .types import FileMetaInfo
 
 
 class FileInspectionResult:
     """
-    파일 분석 결과를 담는 클래스.
+    🧾 파일 분석 결과를 담는 클래스.
     다양한 출력 포맷, 유효성 검사, 통계 분석 등의 기능 제공
     """
-    def __init__(self, file_info: dict, df: Optional[pd.DataFrame], elapsed: float = 0.0):
+    def __init__(self, file_info: FileMetaInfo, df: Optional[pd.DataFrame], elapsed: float = 0.0):
         self.file_info = file_info
         self.df = df
         self.elapsed = elapsed
 
     def to_dict(self) -> dict:
         return {
-            "file_info": self.file_info,
+            "file_info": self.file_info.__dict__,
             "df_shape": self.df.shape if self.df is not None else None,
             "elapsed_time": self.elapsed
         }
@@ -60,7 +61,7 @@ class FileInspector:
 
     def inspect(self, file_path: str) -> FileInspectionResult:
         start = time.time()
-        file_info = self.extractor.extract(file_path)
+        file_info: FileMetaInfo = self.extractor.extract(file_path)
         df = self.reader.read(file_info)
         elapsed = round(time.time() - start, 3)
         return FileInspectionResult(file_info, df, elapsed)

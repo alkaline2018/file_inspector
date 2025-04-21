@@ -4,9 +4,11 @@ from typing import Dict, Optional
 import pandas as pd
 import json
 
+from file_inspector.types import FileMetaInfo
 
-def format_file_info_json(info: Dict) -> str:
-    return json.dumps(info, indent=2, default=str)
+
+def format_file_info_json(info: FileMetaInfo) -> str:
+    return json.dumps(info.__dict__, indent=2, default=str)
 
 
 def format_df_info_json(df: Optional[pd.DataFrame]) -> str:
@@ -21,9 +23,9 @@ def format_df_info_json(df: Optional[pd.DataFrame]) -> str:
     }, indent=2, default=str)
 
 
-def format_json_report(file_info: Dict, df: Optional[pd.DataFrame]) -> str:
+def format_json_report(file_info: FileMetaInfo, df: Optional[pd.DataFrame]) -> str:
     result = {
-        "file_info": file_info,
+        "file_info": file_info.__dict__,
         "dataframe": {
             "shape": df.shape if df is not None else [0, 0],
             "columns": list(df.columns) if df is not None else [],
