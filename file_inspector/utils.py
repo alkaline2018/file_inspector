@@ -190,7 +190,7 @@ def detect_delimiter(
         str: 가장 적합한 구분자.
     """
     if possible_delimiters is None:
-        possible_delimiters = [',', '\t', ';', '|', ' ']
+        possible_delimiters = [',', '\t', ';', '|', ' ','‡']
 
     encoding = None if encoding == "unsupported" else encoding
 
