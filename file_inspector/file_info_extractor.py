@@ -34,7 +34,7 @@ class FileInfoExtractor(IFileInfoExtractor):
             file_path=file_path,
             confirm_at=confirm_at,
             file_name=name_ext.get("file_name"),
-            extension=name_ext.get("extension"),
+            extension=name_ext.get("file_extension"),
             file_size=utils.get_file_size(file_path),
             created_at=timestamps.get("created_at"),
             modified_at=timestamps.get("modified_at"),

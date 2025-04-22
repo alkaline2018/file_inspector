@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="file-inspector",
-    version="0.1.1",
+    version="0.1.2",
     description="파일 메타정보 추출 및 리포트 포맷 변환 유틸",
     author="Song Seung Hwan",
     author_email="shdth117@gmail.com",
