@@ -41,7 +41,6 @@ file-inspector/
 ├── README.md
 ├── .gitignore
 ├── pyproject.toml
-├── setup.py
 └── requirements.txt
 ```
 
